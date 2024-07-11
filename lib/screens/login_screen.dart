@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:resident/helper/utility.dart';
+import 'package:resident/screens/otp_screen.dart';
 
 import '../res/colors.dart';
 import '../res/strings.dart';
@@ -19,6 +20,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenPageState extends State<LoginScreen> {
   static const String _loginBgPath = 'assets/images/login_bg.jpg';
   static const String _appIconPath = 'assets/icons/app_icon.png';
+
+  final TextEditingController _textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,8 @@ class _LoginScreenPageState extends State<LoginScreen> {
               ),
               const Text(
                 Strings.loginScreenDesc,
-                style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'playfair'),
+                style: TextStyle(
+                    fontSize: 20, color: Colors.white, fontFamily: 'playfair'),
               ),
               const Spacer(),
               const Spacer(),
@@ -92,11 +96,13 @@ class _LoginScreenPageState extends State<LoginScreen> {
   }
 
   Widget _phoneNumberInputField() {
-    return const Padding(
-      padding: EdgeInsets.all(16.0),
+    return Padding(
+      padding: const EdgeInsets.all(16.0),
       child: TextField(
+        controller: _textEditingController,
         keyboardType: TextInputType.phone,
-        decoration: InputDecoration(
+        style: const TextStyle(color: Colors.white),
+        decoration: const InputDecoration(
           hintText: Strings.loginScreenInputFieldHint,
           hintStyle: TextStyle(
             color: Colors.white,
@@ -127,7 +133,8 @@ class _LoginScreenPageState extends State<LoginScreen> {
           padding: const EdgeInsets.all(16.0),
           elevation: 6,
           onPressed: () {
-            // TODO: Handle logic of login
+            String phoneNumber = _textEditingController.text;
+            _verifyPhoneNumber("+91$phoneNumber");
           },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(
@@ -157,6 +164,13 @@ class _LoginScreenPageState extends State<LoginScreen> {
       },
       codeSent: (String verificationId, int? resendToken) {
         Utility.logMessage('code sent');
+        Utility.openPage(
+            context,
+            OTPScreen(
+              title: 'OTP',
+              verificationID: verificationId,
+              phoneNumber: number,
+            ));
       },
       codeAutoRetrievalTimeout: (String verificationId) {
         Utility.logMessage('code auto retrieval time-out');
