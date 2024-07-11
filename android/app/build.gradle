@@ -1,0 +1,106 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+}
+
+//Initialize Properties
+def properties = new Properties()
+try {
+    // Load keystore
+    def keystorePropertiesFile = rootProject.file("keystore.properties")
+    properties.load(new FileInputStream(keystorePropertiesFile))
+} catch(IOException e) {
+    // We don't have release keys, ignoring
+    System.out.println( e.printStackTrace() )
+}
+
+//Release key path, password, alias
+final String RELEASE_KEY_STORE_PATH = properties.getProperty('RELEASE_KEY_STORE_PATH')
+final String RELEASE_KEY_STORE_PATH_PASSWORD = properties.getProperty('RELEASE_KEY_STORE_PATH_PASSWORD')
+final String RELEASE_KEY_STORE_PATH_ALIAS = properties.getProperty('RELEASE_KEY_STORE_PATH_ALIAS')
+
+//Debug key path, password, alias
+final String DEBUG_KEY_STORE_PATH = properties.getProperty('DEBUG_KEY_STORE_PATH')
+final String DEBUG_KEY_STORE_PATH_PASSWORD = properties.getProperty('DEBUG_KEY_STORE_PATH_PASSWORD')
+final String DEBUG_KEY_STORE_PATH_ALIAS = properties.getProperty('DEBUG_KEY_STORE_PATH_ALIAS')
+
+
+def localProperties = new Properties()
+def localPropertiesFile = rootProject.file('local.properties')
+if (localPropertiesFile.exists()) {
+    localPropertiesFile.withReader('UTF-8') { reader ->
+        localProperties.load(reader)
+    }
+}
+
+def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
+if (flutterVersionCode == null) {
+    flutterVersionCode = '1'
+}
+
+def flutterVersionName = localProperties.getProperty('flutter.versionName')
+if (flutterVersionName == null) {
+    flutterVersionName = '1.0'
+}
+
+android {
+    namespace "com.resident.resident"
+    compileSdkVersion flutter.compileSdkVersion
+    ndkVersion flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        applicationId "com.resident.resident"
+        // You can update the following values to match your application needs.
+        // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
+        minSdkVersion flutter.minSdkVersion
+        targetSdkVersion flutter.targetSdkVersion
+        versionCode flutterVersionCode.toInteger()
+        versionName flutterVersionName
+    }
+
+    signingConfigs {
+
+        release {
+            storeFile file( RELEASE_KEY_STORE_PATH )
+            storePassword RELEASE_KEY_STORE_PATH_PASSWORD
+            keyAlias RELEASE_KEY_STORE_PATH_ALIAS
+            keyPassword RELEASE_KEY_STORE_PATH_PASSWORD
+        }
+
+        debug {
+            storeFile file( DEBUG_KEY_STORE_PATH )
+            storePassword DEBUG_KEY_STORE_PATH_PASSWORD
+            keyAlias DEBUG_KEY_STORE_PATH_ALIAS
+            keyPassword DEBUG_KEY_STORE_PATH_PASSWORD
+        }
+
+    }
+
+    buildTypes {
+
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            signingConfig signingConfigs.debug
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+    }
+}
+
+flutter {
+    source '../..'
+}

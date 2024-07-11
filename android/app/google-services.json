@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "204554823183",
+    "project_id": "resident-society",
+    "storage_bucket": "resident-society.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:204554823183:android:265071a213b64dec61657a",
+        "android_client_info": {
+          "package_name": "com.resident.resident"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaKvMgEp0R3XLvBrE3zeOV5YDLoZGbYbc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
