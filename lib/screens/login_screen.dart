@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:resident/helper/utility.dart';
@@ -15,31 +17,78 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenPageState extends State<LoginScreen> {
+  static const String _loginBgPath = 'assets/images/login_bg.jpg';
+  static const String _appIconPath = 'assets/icons/app_icon.png';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColors.primaryColor,
-          title: Text(
-            widget.title,
-            style: const TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold,
-              fontSize: 23.0,
+      body: Stack(
+        children: <Widget>[
+          // Background image
+          Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(_loginBgPath),
+                // Replace with your image path
+                fit: BoxFit.cover,
+              ),
             ),
           ),
-          centerTitle: true,
-        ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            _phoneNumberInputField(),
-            _loginButton(),
-            const SizedBox(height: 6,)
-          ],
-        ) // This trailing comma makes auto-formatting nicer for build methods.
+          // Blur effect
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
+            child: Container(
+              color:
+                  Colors.black.withOpacity(0.4), // Adjust the opacity as needed
+            ),
+          ),
+          // Your content
+          Column(
+            children: <Widget>[
+              const Spacer(),
+              _logo(),
+              const SizedBox(
+                height: 8,
+              ),
+              const Text(
+                Strings.appName,
+                style: TextStyle(
+                    fontSize: 30,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'playfair'),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              const Text(
+                Strings.loginScreenDesc,
+                style: TextStyle(fontSize: 20, color: Colors.white, fontFamily: 'playfair'),
+              ),
+              const Spacer(),
+              const Spacer(),
+              _phoneNumberInputField(),
+              _loginButton(),
+              const SizedBox(
+                height: 8,
+              ),
+            ],
+          ),
+        ],
+      ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
+  }
+
+  Widget _logo() {
+    return Align(
+        alignment: Alignment.center,
+        child: Image.asset(
+          _appIconPath,
+          width: 180,
+          height: 180,
+        ));
   }
 
   Widget _phoneNumberInputField() {
@@ -49,6 +98,9 @@ class _LoginScreenPageState extends State<LoginScreen> {
         keyboardType: TextInputType.phone,
         decoration: InputDecoration(
           hintText: Strings.loginScreenInputFieldHint,
+          hintStyle: TextStyle(
+            color: Colors.white,
+          ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(12.0)),
           ),
@@ -78,7 +130,8 @@ class _LoginScreenPageState extends State<LoginScreen> {
             // TODO: Handle logic of login
           },
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(18.0), // Adjust the radius value as needed
+            borderRadius: BorderRadius.circular(
+                18.0), // Adjust the radius value as needed
           ),
           child: const Text(
             Strings.loginScreenBtnText,
