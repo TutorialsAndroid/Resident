@@ -121,6 +121,8 @@ class _OTPScreenPageState extends State<OTPScreen> {
       // If the above line doesn't throw, the sign-in was successful
       Utility.logMessage("Successfully signed in: ${userCredential.user}");
       // You can now navigate to the next screen or show a success message
+      //TODO Call the second screen
+
     } on FirebaseAuthException catch (e) {
       // If the sign-in failed, a FirebaseAuthException is thrown
       Utility.logMessage("Failed with error code: ${e.code}");
