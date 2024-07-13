@@ -3,15 +3,13 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:resident/helper/utility.dart';
-import 'package:resident/screens/otp_screen.dart';
+import 'package:resident/screens/otp_screen2.dart';
 
 import '../res/colors.dart';
 import '../res/strings.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key, required this.title});
-
-  final String title;
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenPageState();
@@ -164,10 +162,10 @@ class _LoginScreenPageState extends State<LoginScreen> {
       },
       codeSent: (String verificationId, int? resendToken) {
         Utility.logMessage('code sent');
+        Navigator.pop(context);
         Utility.openPage(
             context,
-            OTPScreen(
-              title: 'OTP',
+            OTPScreen2(
               verificationID: verificationId,
               phoneNumber: number,
             ));
