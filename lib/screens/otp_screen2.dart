@@ -21,10 +21,11 @@ class _OTPScreen2PageState extends State<OTPScreen2> {
       List.generate(6, (_) => TextEditingController());
   final List<FocusNode> _focusNodes = List.generate(6, (_) => FocusNode());
 
-  static const String _iconPath = 'assets/images/pin.png';
+  static const String _iconPath = 'assets/icons/pin.png';
   static const String _title1 = 'Enter  your\nVerification Code';
   static const String _resendCode1 = "Didn't get it?";
   static const String _resendCode2 = 'Resend Code';
+  static const String _verifyOTPBtnText = 'Verify OTP';
 
   @override
   Widget build(BuildContext context) {
@@ -165,7 +166,7 @@ class _OTPScreen2PageState extends State<OTPScreen2> {
                 18.0), // Adjust the radius value as needed
           ),
           child: const Text(
-            'Verify OTP',
+            _verifyOTPBtnText,
             style: TextStyle(
               fontSize: 16,
               color: Colors.white,

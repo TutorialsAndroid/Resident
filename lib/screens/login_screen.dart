@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:resident/helper/constants.dart';
 import 'package:resident/helper/utility.dart';
 import 'package:resident/screens/otp_screen2.dart';
 
@@ -58,7 +59,7 @@ class _LoginScreenPageState extends State<LoginScreen> {
                     fontSize: 30,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
-                    fontFamily: 'playfair'),
+                    fontFamily: Constants.playfair),
               ),
               const SizedBox(
                 height: 4,
@@ -66,7 +67,7 @@ class _LoginScreenPageState extends State<LoginScreen> {
               const Text(
                 Strings.loginScreenDesc,
                 style: TextStyle(
-                    fontSize: 20, color: Colors.white, fontFamily: 'playfair'),
+                    fontSize: 20, color: Colors.white, fontFamily: Constants.playfair),
               ),
               const Spacer(),
               const Spacer(),
