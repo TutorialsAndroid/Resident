@@ -29,6 +29,7 @@ class _ProfileScreenPageState extends State<ProfileScreen> {
           const SizedBox(
             height: 16,
           ),
+          //TODO Use SingleChildScrollView
           const Text(
             _accountInfoTitle,
             style: TextStyle(
