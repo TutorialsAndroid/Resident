@@ -152,44 +152,43 @@ class _CommunityScreenPageState extends State<CommunityScreen> {
                 Utility.openPage(context, const SocietyDuesPage());
                 break;
               case 1:
-                //TODO Rent Pay
+                Utility.openPage(context, const RentPayPage());//TODO Rent Pay
                 break;
               case 2:
-                //TODO Utilities Payment
+                Utility.openPage(context,const UtilitiesPaymentPage());//TODO Utilities Payment
                 break;
               case 3:
-                //TODO Prepaid Meter
+                Utility.openPage(context, const PrepaidMeterPage());//TODO Prepaid Meter
                 break;
               case 4:
-                //TODO Residents
+                Utility.openPage(context, const ResidentsPage());//TODO Residents  //TODO PAGE
                 break;
               case 5:
-                //TODO Daily help
+                Utility.openPage(context, const DailyHelpPage());//TODO Daily help
                 break;
               case 6:
-                //TODO SOS
+                Utility.openPage(context, const SOSPage());//TODO SOS
                 break;
               case 7:
-                //TODO Local directory
+                Utility.openPage(context, const LocalDirectoryPage());//TODO Local directory
                 break;
               case 8:
-                //TODO Help Desk
+                Utility.openPage(context, const HelpDeskPage());//TODO Help Desk
                 break;
               case 9:
-                //TODO Amenities
+                Utility.openPage(context, const AmentiesPage());//TODO Amenities
                 break;
               case 10:
-                //TODO Notice Board
+                Utility.openPage(context, const NoticeBoardPage());//TODO Notice Board
                 break;
               case 11:
-                //TODO Communications
+                Utility.openPage(context, const CommunicationsPage());//TODO Communications
                 break;
               case 12:
-                //TODO Documents
+                Utility.openPage(context, cosnt DocumnetsPage());//TODO Documents
                 break;
             }
-          },
-          child: Card(
+          },  child: Card(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15.0),
             ),
