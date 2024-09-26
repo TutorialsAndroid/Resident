@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(SosPage());
 
-class MyApp extends StatelessWidget {
+class SosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
