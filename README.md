@@ -14,7 +14,13 @@ Welcome to the **Resident | Society Management App**! This Flutter-based app is 
 
 ## Screenshots
 
-_Add screenshots here to showcase your app's beautiful UI._
+![Login Page](https://raw.githubusercontent.com/Sakshi-2508/Resident/refs/heads/master/screenshot/1.png)
+![OTP Page](https://raw.githubusercontent.com/Sakshi-2508/Resident/refs/heads/master/screenshot/2.png)
+![Profile Page](https://raw.githubusercontent.com/Sakshi-2508/Resident/refs/heads/master/screenshot/3.png)
+![Community Page](https://raw.githubusercontent.com/Sakshi-2508/Resident/refs/heads/master/screenshot/4.png)
+![Society Dues](https://raw.githubusercontent.com/Sakshi-2508/Resident/refs/heads/master/screenshot/5.png)
+![Prepaid Meter](https://raw.githubusercontent.com/Sakshi-2508/Resident/refs/heads/master/screenshot/5.png)
+
 
 ## Installation
 
