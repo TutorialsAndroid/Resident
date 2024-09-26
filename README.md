@@ -22,7 +22,7 @@ To run the project locally, follow these steps:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/resident-society-management-app.git
+   git clone https://github.com/Sakshi-2508/Resident.git
    cd resident-society-management-app
    ```
 
